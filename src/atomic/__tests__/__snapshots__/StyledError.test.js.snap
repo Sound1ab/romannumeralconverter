@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledError renders correctly 1`] = `
+.c0 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin: 24px;
+}
+
+<p
+  className="c0"
+>
+  Error Message
+</p>
+`;
