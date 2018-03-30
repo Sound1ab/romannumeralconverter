@@ -38,13 +38,13 @@ class App extends Component {
                     <form>
                         <StyledInput type="text" value={input} onChange={this.handleChange} />
                     </form>
-                    {/*<RomanNumeralConverter input={this.convertToNumber(input)}>*/}
-                        {/*{({numeral}) => (*/}
-                            {/*<StyledText>*/}
-                                {/*{numeral}*/}
-                            {/*</StyledText>*/}
-                        {/*)}*/}
-                    {/*</RomanNumeralConverter>*/}
+                    <RomanNumeralConverter input={input}>
+                        {({numeral}) => (
+                            <StyledText>
+                                {numeral}
+                            </StyledText>
+                        )}
+                    </RomanNumeralConverter>
                 </ErrorBoundary>
             </div>
         );
