@@ -10,18 +10,18 @@
 * ```npm run build``` to create the deployment build in __build/__
 * ```npm run test``` to launch test suite
 
-##### Details #####
+#### Details ####
 
 React 16 project created with create-react-app to convert decimal system digits into Roman Numerals. 
 
-##### Styling #####
+#### Styling ####
 
 This project uses styled components to create components with encapsulated style.
 
-##### Error Handling #####
+#### Error Handling ####
 
 Appropriate handling of the input has been setup in order to eliminate any type errors that could arise if it feeds any non numeric numbers into the converter. The converter will only accept a maximum value of 5000 as dashed symbols are not permitted. An error boundary has also been setup to catch any additional errors.
 
-##### Tests #####
+#### Tests ####
 
 Simple snapshot tests have been setup for the basic components and a more in depth suite of test created for the RomanNumeralConverter.js component. 
