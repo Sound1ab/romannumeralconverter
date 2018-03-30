@@ -10,7 +10,7 @@ class RomanNumeralConverter extends Component {
         // Values that require roman numeral subtraction e.g. 4, 9, 90 added as keys
         // otherwise the converter logic becomes unnecessarily complex
         this.keys = new Map([['M', 1000], ['CM', 900], ['D', 500], ['CD', 400], ['C', 100], ['XC', 90], ['L', 50], ['XL', 40], ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1],]);
-        this.INPUT_LIMIT = 9999;
+        this.INPUT_LIMIT = 4999;
         this.convertNumber = this.convertNumber.bind(this);
     }
     componentWillReceiveProps ({input}) {
@@ -46,7 +46,7 @@ class RomanNumeralConverter extends Component {
             <div className={this.props.className}>
                 {this.props.children(this.state)}
                 {inputError
-                    ? <StyledError>Input can only be 4 digits long</StyledError>
+                    ? <StyledError>Input must be less than 5000</StyledError>
                     : null}
             </div>
         )
