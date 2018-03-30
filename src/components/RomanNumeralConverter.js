@@ -27,7 +27,7 @@ class RomanNumeralConverter extends Component {
     }
     // Converter uses recursion to break the number down. Each subsequent
     // numeral is found by reducing it by the value that came before it
-    // and performing and lookup on the keys
+    // and performing a lookup on the keys
     convertNumber (number, numeral = '') {
         let currentNumeral;
         if (number <= 0) {
