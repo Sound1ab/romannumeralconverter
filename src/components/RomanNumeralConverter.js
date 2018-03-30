@@ -76,7 +76,7 @@ class RomanNumeralConverter extends Component {
 };
 
 RomanNumeralConverter.propTypes = {
-    input: PropTypes.number,
+    input: PropTypes.string,
     children: PropTypes.func.isRequired
 };
 
