@@ -27,13 +27,13 @@ class App extends Component {
         const {input} = this.state;
         return (
             <div className={this.props.className}>
-                <StyledTitle>
-                    Roman Numeral Converter
-                </StyledTitle>
-                <form>
-                    <StyledInput type="number" value={input} onChange={this.handleChange} />
-                </form>
                 <ErrorBoundary>
+                    <StyledTitle>
+                        Roman Numeral Converter
+                    </StyledTitle>
+                    <form>
+                        <StyledInput type="number" value={input} onChange={this.handleChange} />
+                    </form>
                     <RomanNumeralConverter input={this.convertToNumber(input)}>
                         {({numeral}) => (
                             <StyledText>
