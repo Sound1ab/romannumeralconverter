@@ -14,14 +14,17 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange (e) {
-        this.setState({input: e.target.value});
-    }
-    convertToNumber (string) {
-        let value = parseInt(string, 10);
-        if (isNaN(value)) {
-            return 0;
+        let lastChar = e.target.value.split('').pop();
+        if (this.isAlpha(lastChar) && this.isRomanNumeral(lastChar)) {
+            this.setState({input: e.target.value.toUpperCase()});
         }
-        return value
+    }
+    isRomanNumeral (string) {
+        return testStr(string, createRomanNumeralRegex());
+    }
+    isAlpha (string) {
+        let value = parseInt(string, 10);
+        return isNaN(value);
     }
     // Using a render prop to encapsulate the converter logic
     render() {
@@ -33,15 +36,15 @@ class App extends Component {
                         Roman Numeral Converter
                     </StyledTitle>
                     <form>
-                        <StyledInput type="number" value={input} onChange={this.handleChange} />
+                        <StyledInput type="text" value={input} onChange={this.handleChange} />
                     </form>
-                    <RomanNumeralConverter input={this.convertToNumber(input)}>
-                        {({numeral}) => (
-                            <StyledText>
-                                {numeral}
-                            </StyledText>
-                        )}
-                    </RomanNumeralConverter>
+                    {/*<RomanNumeralConverter input={this.convertToNumber(input)}>*/}
+                        {/*{({numeral}) => (*/}
+                            {/*<StyledText>*/}
+                                {/*{numeral}*/}
+                            {/*</StyledText>*/}
+                        {/*)}*/}
+                    {/*</RomanNumeralConverter>*/}
                 </ErrorBoundary>
             </div>
         );
