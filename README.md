@@ -20,7 +20,7 @@ This project uses styled components to create components with encapsulated style
 
 ##### Error Handling #####
 
-Appropriate handling of the input has been setup in order to eliminate any type errors that could arise if it feeds any non numeric numbers into the converter. The converter will only accept a maximum of 4 digits as dashed symbols are not permitted. An error boundary has also been setup to catch any additional errors.
+Appropriate handling of the input has been setup in order to eliminate any type errors that could arise if it feeds any non numeric numbers into the converter. The converter will only accept a maximum value of 5000 as dashed symbols are not permitted. An error boundary has also been setup to catch any additional errors.
 
 ##### Tests #####
 
