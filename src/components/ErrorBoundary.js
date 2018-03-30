@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyledError} from "../atomic/StyledError";
+import {StyledError} from "./StyledError";
 
 export default class ErrorBoundary extends Component {
     constructor(props) {

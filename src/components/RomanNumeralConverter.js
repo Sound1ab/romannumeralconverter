@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyledError} from '../atomic/StyledError';
+import {StyledError} from './StyledError';
 import styled from 'styled-components';
 
 class RomanNumeralConverter extends Component {

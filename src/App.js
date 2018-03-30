@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyledInput} from './atomic/StyledInput';
-import {StyledText} from './atomic/StyledText';
-import {StyledTitle} from './atomic/StyledTitle';
+import {StyledInput} from './components/StyledInput';
+import {StyledText} from './components/StyledText';
+import {StyledTitle} from './components/StyledTitle';
 import styled from 'styled-components';
 import RomanNumeralConverter from './components/RomanNumeralConverter';
 import ErrorBoundary from './components/ErrorBoundary';
