@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyledInput} from './components/StyledInput';
 import {StyledText} from './components/StyledText';
 import {StyledTitle} from './components/StyledTitle';
+import {createRomanNumeralRegex, testStr} from './utils/regex-helpers';
 import styled from 'styled-components';
 import RomanNumeralConverter from './components/RomanNumeralConverter';
 import ErrorBoundary from './components/ErrorBoundary';
