@@ -4,7 +4,7 @@
 
 ### How do I get set up? ###
 
-* `Clone`,  or `download` the REPO from [Github]()
+* `Clone`,  or `download` the REPO from [Github](https://github.com/Sound1ab/romannumeralconverter)
 * ```npm install``` or ```yarn install``` to install necessary dependencies
 * ```npm run dev``` to [run a webserver at localhost:8080](http://localhost:8080/)
 * ```npm run build``` to create the deployment build in __build/__
