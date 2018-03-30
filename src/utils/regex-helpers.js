@@ -3,7 +3,7 @@ export function createRomanNumeralRegex ({negated = false} = {}) {
 }
 
 export function createRegex (value) {
-    return new RegExp(`^${value}`, 'gi');
+    return new RegExp(value, 'gi');
 }
 
 export function testStr (str, regex) {
