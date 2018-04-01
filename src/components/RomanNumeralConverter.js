@@ -80,13 +80,12 @@ class RomanNumeralConverter extends Component {
         return this.convertNumber(numeral, [...number, foundNumber])
     }
     render () {
-        const {inputError} = this.state;
+        const {inputErrors} = this.state;
         return (
             <div className={this.props.className}>
-                {this.props.children(this.state)}
-                {inputError
-                    ? <StyledError>Input must be less than 5000</StyledError>
-                    : null}
+                {Object.values(inputErrors).includes(true)
+                    ? <StyledError>Input is not a valid Roman numeral</StyledError>
+                    : this.props.children(this.state)}
             </div>
         )
     }
