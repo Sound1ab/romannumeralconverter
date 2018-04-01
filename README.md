@@ -20,8 +20,14 @@ This project uses styled components to create components with encapsulated style
 
 #### Error Handling ####
 
-Appropriate handling of the input has been setup in order to eliminate any type errors that could arise if it feeds any non numeric numbers into the converter. The converter will only accept a maximum value of 5000 as dashed symbols are not permitted. An error boundary has also been setup to catch any additional errors.
+Appropriate handling of the input has been setup in order to eliminate any type errors that could arise if it feeds any numeric numbers into the converter. 
+
+The component also has checks setup to watch repeating, descending and incorrect subtractor values.
 
 #### Tests ####
 
 Simple snapshot tests have been setup for the basic components and a more in depth suite of test created for the RomanNumeralConverter.js component. 
+
+#### Unresolved issues ####
+
+Currently there is no way to group input values intelligently. For example, the current input checks can't determine that LXL is incorrect. This is because the algorithm starts by slicing off the first L, then grouping the next two values as 40, giving a value of 90. A more advanced lookup on the input is needed to figure this out.
