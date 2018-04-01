@@ -7,7 +7,8 @@ import {
     createRegex,
     replaceFoundText,
     checkRepeatingNumeral,
-    checkDescendingValue
+    checkDescendingValue,
+    checkNonRepeatingSubtractor
 } from '../utils/regex-helpers';
 import styled from 'styled-components';
 
@@ -20,6 +21,7 @@ class RomanNumeralConverter extends Component {
                 nonRepeating: false,
                 repeating: false,
                 descending: false,
+                nonRepeatingSubtractor: false,
                 length: false
             }
         };
@@ -27,30 +29,45 @@ class RomanNumeralConverter extends Component {
         // otherwise the converter logic becomes unnecessarily complex
         this.keys = new Map([['M', 1000], ['CM', 900], ['D', 500], ['CD', 400], ['C', 100], ['XC', 90], ['L', 50], ['XL', 40], ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1],]);
         this.INPUT_LIMIT = 10;
+        this.compose = (x,y) => z => x(y(z));
         this.convertNumber = this.convertNumber.bind(this);
+        this.updateNumeral = this.updateNumeral.bind(this);
+        this.updateErrors = this.updateErrors.bind(this);
     }
     componentWillReceiveProps ({input}) {
-        const sanitisedInput = this.limitInputLength(input);
-        const convertedNumber = this.convertNumber(input);
+        const convertNumberWithSanitisedInput = this.compose(this.convertNumber, this.limitInputLength.bind(null, this.INPUT_LIMIT));
+        const convertedNumber = convertNumberWithSanitisedInput(input);
+        this.updateNumeral(convertedNumber);
+        this.updateErrors(convertedNumber, input);
+    }
+    updateNumeral (convertedNumber) {
         this.setState({
-            numeral: convertedNumber,
+            numeral: convertedNumber.length > 0
+                ? convertedNumber.reduce((acc, el) => acc + el)
+                : []
+        });
+    }
+    // Given more time, specific error messages could be setup
+    updateErrors (convertedNumber, input) {
+        this.setState({
             inputErrors: {
-                nonRepeating:  checkRepeatingNumeral(sanitisedInput, ['V','L','D'], 2),
-                repeating:  checkRepeatingNumeral(sanitisedInput, ['I','X','C','M'], 4),
-                descending: checkDescendingValue(convertedNumber),
+                nonRepeating:  checkRepeatingNumeral(input, ['V','L','D'], 2),
+                repeating:  checkRepeatingNumeral(input, ['I','X','C','M'], 4),
+                notDescending: checkDescendingValue(convertedNumber),
+                nonRepeatingSubtractor: checkNonRepeatingSubtractor(convertedNumber),
                 length:  input.length > this.INPUT_LIMIT
             }
         });
     }
-    limitInputLength (input) {
-        return input.substr(0, this.INPUT_LIMIT);
+    limitInputLength (limit, input) {
+        return input.substr(0, limit);
     }
     // Converter uses recursion to break the number down. Each subsequent
     // numeral is found by reducing it by the value that came before it
     // and performing a lookup on the keys
     convertNumber (numeral, number = []) {
         let foundNumber = 0;
-        if (numeral.length <= 0 || testStr(numeral, createRomanNumeralRegex({negated: true}))) {
+        if (numeral.length <= 0 || testStr(numeral, createRomanNumeralRegex(true))) {
             return number;
         }
         this.keys.forEach((val, key) => {
