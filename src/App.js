@@ -19,9 +19,11 @@ class App extends Component {
             this.setState({input: e.target.value.toUpperCase()});
         }
     }
+    // Generic check to see if input is part of roman numeral set
     isRomanNumeral (string) {
         return testStr(string, createRomanNumeralRegex());
     }
+    // Generic check to see if value is not a number
     isAlpha (string) {
         let value = parseInt(string, 10);
         return isNaN(value);
