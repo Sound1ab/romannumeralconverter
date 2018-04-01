@@ -20,7 +20,7 @@ class RomanNumeralConverter extends Component {
             inputErrors: {
                 nonRepeating: false,
                 repeating: false,
-                descending: false,
+                notDescending: false,
                 nonRepeatingSubtractor: false,
                 length: false
             }

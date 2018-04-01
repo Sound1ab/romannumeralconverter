@@ -43,16 +43,24 @@ describe('RomanNumeralConverter', () => {
     });
     describe('Errors', () => {
     	it('should not accept input with I, X, C, and M repeating more than 3 times', () => {
-
+    	    expect(wrapper.state('inputErrors').repeating).toBe(false);
+            wrapper.setProps({input: 'IIII'});
+    	    expect(wrapper.state('inputErrors').repeating).toBe(true);
     	});
     	it('should not accept input with V, L, and D repeating', () => {
-    		
+            expect(wrapper.state('inputErrors').nonRepeating).toBe(false);
+            wrapper.setProps({input: 'VV'});
+            expect(wrapper.state('inputErrors').nonRepeating).toBe(true);
     	});
     	it('should not accept input with any ascending values', () => {
-    		
+            expect(wrapper.state('inputErrors').notDescending).toBe(false);
+            wrapper.setProps({input: 'LXD'});
+            expect(wrapper.state('inputErrors').notDescending).toBe(true);
     	});
     	it('should not accept input with length large than 10', () => {
-    		
+            expect(wrapper.state('inputErrors').length).toBe(false);
+            wrapper.setProps({input: 'LLLLLLLLLLL'});
+            expect(wrapper.state('inputErrors').length).toBe(true);
     	});
     });
 });
